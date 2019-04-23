@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+       自动售卖机
+      
+
+    </title>
+    <script>
+    
+    var n=3; //有3个5角钱
+    // var ck=function(){
+    // var x= prompt("");  
+    // var y = prompt("请投入0.5元或者1元: ");
+    // parseInt(y);
+    function ck(){
+
+        var input=document.getElementById("sell");
+        var drink =document.getElementById("drink");
+        var sinfo=document.getElementById("sinfo");
+        if(input!=null){
+          drink.innerHTML=input.value;
+    
+          if(input.value=="橙汁"||input.value=="啤酒"){
+          sinfo.innerHTML="请投入0.5元或者1元";
+          input.value="";
+          
+          }else
+            sinfo.innerHTML='没有这种饮料';
+        }
+        var money=document.getElementById("money");
+
+          if(money!=null){
+            drink =document.getElementById("drink");
+            var y=parseFloat(money.value);
+            if(y!=0.5&&y!=1){
+              sinfo.innerHTML='请投入0.5元或者1';
+              alert(y)  
+            }         
+            
+            else if( y==1)
+            {    
+            if(n<=0)
+               sinfo.innerHTML='退您1元，饮料不出';
+            else{
+                
+               sinfo.innerHTML='找您0.5元，您的'+drink.innerHTML+'请拿好';
+               n--;
+            }            
+            }
+            else if( y==0.5)
+                sinfo.innerHTML='您的'+drink.innerHTML+'请拿好';
+            
+            }
+            if(input!=null)
+                input.id="money";
+    }
+    </script>
+</head>
+<body>
+     <div id="sinfo">饮料：橙汁，啤酒 </div>
+       <input type="text" name="sell" id="sell" >
+       <div id="drink" style="display: none;"></div>
+<button onclick="ck();">
+    购买饮料
+</button>
+
+</body>
+</html>
+
+
